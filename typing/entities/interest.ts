@@ -4,6 +4,6 @@ import GroupEntity from "@/typing/entities/group";
 export default interface InterestEntity {
   name: string;
   description: string;
-  imageUrl: string;
+  imageUrl?: string;
   users?: UserEntity[];
 }
