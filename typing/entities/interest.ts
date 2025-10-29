@@ -5,5 +5,5 @@ export default interface InterestEntity {
   name: string;
   description: string;
   imageUrl: string;
-  users: UserEntity[];
+  users?: UserEntity[];
 }

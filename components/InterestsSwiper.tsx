@@ -4,8 +4,7 @@ import Swiper from 'react-native-deck-swiper';
 import SwiperCard from "@/components/SwiperCard";
 import * as Progress from 'react-native-progress';
 import {ThemedView} from "@/components/Themed";
-
-const interests = ['Card 1', 'Card 2', 'Card 3', 'Card 4'];
+import {interestsList} from '@/dummy-data/interests';
 
 export default function InterestsSwiper() {
 
@@ -19,11 +18,11 @@ export default function InterestsSwiper() {
 
   return (
       <Swiper
-        cards={interests}
-        renderCard={(interest) => <SwiperCard interest={interest}></SwiperCard>}
-        onSwipedLeft={handleDislike}
-        onSwipedRight={handleLike}
-        stackSize={interests.length}
+        cards={interestsList}
+        renderCard={(interest) => <SwiperCard interest={interest.name}></SwiperCard>}
+        onSwipedLeft={handleLike}
+        onSwipedRight={handleDislike}
+        stackSize={interestsList.length}
         backgroundColor={"#fff"}
         infinite
       />
