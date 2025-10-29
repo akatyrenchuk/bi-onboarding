@@ -7,6 +7,7 @@ import {ScaledSheet, ms} from "react-native-size-matters";
 import {
   widthPercentageToDP
 } from 'react-native-responsive-screen';
+import {IconSymbol} from "@/components/IconSymbol";
 
 export default function InterestsScreen() {
   const progressWidth = widthPercentageToDP('100%') - ms(48);
@@ -17,8 +18,14 @@ export default function InterestsScreen() {
        <Progress.Bar progress={0.1} width={progressWidth} />
        <ThemedText style={styles.infoContainerText}>Swipe to answer</ThemedText>
        <View style={styles.infoContainer}>
-         <ThemedText type={"titleLarge"}>No</ThemedText>
-         <ThemedText type={"titleLarge"}>Yes</ThemedText>
+         <View style={styles.infoContainerChoice}>
+           <IconSymbol name={"chevron.left"} color={"#002341"}></IconSymbol>
+           <ThemedText type={"titleLarge"}>No</ThemedText>
+         </View>
+         <View style={styles.infoContainerChoice}>
+           <ThemedText type={"titleLarge"}>Yes</ThemedText>
+           <IconSymbol name={"chevron.right"} color={"#002341"}></IconSymbol>
+         </View>
        </View>
      </View>
      <View>
@@ -45,6 +52,11 @@ const styles = ScaledSheet.create({
   },
   infoContainer: {
     gap: '12@ms',
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
+  },
+  infoContainerChoice: {
     flexDirection: 'row',
     justifyContent: 'space-evenly',
     alignItems: 'center',

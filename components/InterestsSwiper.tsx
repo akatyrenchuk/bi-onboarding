@@ -19,12 +19,16 @@ export default function InterestsSwiper() {
   return (
       <Swiper
         cards={interestsList}
-        renderCard={(interest) => <SwiperCard interest={interest.name}></SwiperCard>}
+        renderCard={(interest) => {
+          console.log(interest)
+          return (
+            <SwiperCard interest={interest}/>
+          )
+        }}
         onSwipedLeft={handleLike}
         onSwipedRight={handleDislike}
         stackSize={interestsList.length}
         backgroundColor={"#fff"}
-        infinite
       />
   )
 }
