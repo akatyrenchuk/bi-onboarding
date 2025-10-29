@@ -4,7 +4,7 @@ import { Platform, StyleSheet } from 'react-native';
 import EditScreenInfo from '@/components/EditScreenInfo';
 import { ThemedText, ThemedView } from '@/components/Themed';
 
-export default function ModalScreen() {
+export default function LoginScreen() {
   return (
     <ThemedView style={styles.container}>
       <ThemedText style={styles.title}>Modal</ThemedText>
@@ -19,7 +19,6 @@ export default function ModalScreen() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
   },
