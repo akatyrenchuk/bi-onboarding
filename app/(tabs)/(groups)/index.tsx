@@ -1,22 +1,27 @@
-import { StyleSheet } from 'react-native';
-import { ThemedView } from '@/components/Themed';
+import {Animated, ScrollView, StyleSheet} from "react-native";
+import {ThemedView, useThemeColor} from "@/components/Themed";
 import { groupsList} from "@/dummy-data/groups";
 import GroupCard from "@/components/GroupCard";
+import {ScaledSheet} from "react-native-size-matters";
 
 export default function GroupsScreen() {
+  const backgroundColor = useThemeColor({ }, 'background');
+
   return (
-    <ThemedView style={styles.container}>
+    <ScrollView style={{backgroundColor}} contentContainerStyle={[styles.container]}>
       {groupsList.map((group, index) => (
-        <GroupCard title={group.name} key={group.name}></GroupCard>
+        <GroupCard key={group.name} {...group}></GroupCard>
       ))}
-    </ThemedView>
+    </ScrollView>
   );
 }
 
-const styles = StyleSheet.create({
+const styles = ScaledSheet.create({
   container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    padding: '12@ms',
+    gap: '12@ms'
+  },
+  sectionContainer: {
+    gap: '12@ms'
   }
 });

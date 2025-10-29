@@ -4,7 +4,8 @@ import UserEntity from "@/typing/entities/user";
 
 export default interface GroupEntity {
   name: string
-  description: string
+  description: string,
+  url: string,
   groupType: "Academic" | 'Social'
   interest: InterestEntity
   events?: EventEntity[];
