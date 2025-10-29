@@ -15,7 +15,7 @@ import {useRouter} from "expo-router";
 
 export default function InterestsScreen() {
   const progressWidth = widthPercentageToDP('100%') - ms(48);
-  const progressStep = 1 / interestsList.length;
+  const progressStep = 1 / 5;
   const [progress, setProgress] = useState(progressStep)
   const router = useRouter();
 
