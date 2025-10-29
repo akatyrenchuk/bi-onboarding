@@ -5,9 +5,11 @@ import UserEntity from "@/typing/entities/user";
 export default interface GroupEntity {
   name: string
   description: string,
-  url: string,
+  imageUrl: string,
   groupType: "Academic" | 'Social'
   interest: InterestEntity
   events?: EventEntity[];
   users?: UserEntity[];
+  createdAt?: string;
+  updatedAt?: string;
 }

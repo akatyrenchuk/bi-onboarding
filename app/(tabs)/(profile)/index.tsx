@@ -3,7 +3,7 @@ import {ThemedText, ThemedView} from "@/components/Themed";
 
 export default function ProfileScreen() {
   return (
-    <ThemedView>Profile</ThemedView>
+    <ThemedView></ThemedView>
   );
 }
 
