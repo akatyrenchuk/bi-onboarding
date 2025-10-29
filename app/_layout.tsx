@@ -80,6 +80,7 @@ function RootLayoutNav() {
         <Stack.Screen
           name="interests"
           options={{
+            gestureEnabled: false,
             presentation: 'modal',
             title : "Choose your interests",
           }}

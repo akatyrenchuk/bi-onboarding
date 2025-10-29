@@ -37,7 +37,8 @@ export default function LoginScreen() {
         </TextInput>
       </View>
       <ThemedButton textContent={"Log in"} onPress={() => {
-        setStatus("ready");
+        // setStatus("ready");
+        router.navigate("/interests");
       }}/>
       <View style={{
         alignSelf: "flex-end",
