@@ -3,7 +3,7 @@
  * https://docs.expo.io/guides/color-schemes/
  */
 
-import { Text as DefaultText, View as DefaultView } from 'react-native';
+import {Pressable, PressableProps, Text as DefaultText, View as DefaultView} from "react-native";
 
 import Colors from '@/constants/Colors';
 import {useSafeAreaInsets} from "react-native-safe-area-context";
@@ -49,4 +49,18 @@ export function ThemedView(props: ViewProps) {
     paddingBottom: insets.bottom,
 
   }, style]} {...otherProps} />;
+}
+
+type ThemedButtonProps = PressableProps & {
+  textContent: string;
+};
+export function ThemedButton({
+  textContent, style, onPress, ...otherProps
+}: ThemedButtonProps) {
+
+  return (
+    <Pressable style={style} onPress={onPress} {...otherProps}>
+      <ThemedText>{textContent}</ThemedText>
+    </Pressable>
+  );
 }
