@@ -8,6 +8,8 @@ import {interestsList} from '@/dummy-data/interests';
 
 export default function InterestsSwiper() {
 
+  let progress = 0;
+
   function handleDislike() {
     console.log('Liked');
   }
