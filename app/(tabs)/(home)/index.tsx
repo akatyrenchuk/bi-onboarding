@@ -45,13 +45,16 @@ export default function HomeScreen() {
           <ThemedText type={"titleLarge"}>{"Lectures"}</ThemedText>
           <ThemedText type={"defaultBold"} style={{color: '#0A64FF'}}>{"View all upcoming"}</ThemedText>
         </View>
-        <LectureCard lecture={"Management"} time={"10:00 - 12:00"} location={"Oslo Campus"} title={"Test"} lecturer={"Anton Katyrenchuk"}/>
+        <LectureCard lecture={"Lecture"} time={"10:00 - 12:00"} location={"Oslo Campus"} title={"Management"} lecturer={"Anton Katyrenchuk"}/>
+        <LectureCard lecture={"Lecture"} time={"13:00 - 16:00"} location={"Oslo Campus"} title={"Marketing"} lecturer={"Anton Katyrenchuk"}/>
       </View>
       <View style={styles.sectionContainer}>
         <View style={{justifyContent: 'space-between', alignItems: 'center', flexDirection: 'row'}}>
           <ThemedText type={"titleLarge"}>{"News"}</ThemedText>
           <ThemedText type={"defaultBold"} style={{color: '#0A64FF'}}>{"View all upcoming"}</ThemedText>
         </View>
+          <NewsCard title={"New course"} description={"New course is available in Bachelor Administration and Management, you will learn a lot of cool stuff."} imageUrl={"https://picsum.photos/200/300"}/>
+          <NewsCard title={"Moose in BI"} description={"A moose was seen in Oslo Campus"} imageUrl={"https://picsum.photos/100/900"}/>
       </View>
     </ScrollView>
   );
@@ -179,6 +182,45 @@ function LectureCard({
         <ThemedText type={"titleLarge"}>{title}</ThemedText>
         <ThemedText type={"default"}>{lecturer}</ThemedText>
       </View>
+    </View>
+  );
+}
+
+type NewsCardProps = {
+  title: string,
+  description: string,
+  imageUrl: string,
+}
+function NewsCard({
+  title,
+  description,
+  imageUrl
+}: NewsCardProps) {
+  return (
+    <View style={{
+      borderRadius: ms(4),
+      borderWidth: 1,
+      borderColor: '#D5DDE4',
+      flexDirection: 'row',
+      overflow: 'hidden',
+      justifyContent: 'space-between'
+    }}>
+      <View style={{
+        gap: ms(6),
+        padding: ms(12),
+        maxWidth: '60%'
+      }}>
+        <ThemedText type={"title"}>{title}</ThemedText>
+        <ThemedText>{description}</ThemedText>
+      </View>
+      <Image
+      style={{
+          width: ms(120),
+          height: ms(120),
+        }}
+        contentFit={"cover"}
+        source={imageUrl}
+      />
     </View>
   );
 }
