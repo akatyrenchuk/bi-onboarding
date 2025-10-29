@@ -59,6 +59,12 @@ function RootLayoutNav() {
     router.navigate('/login')
   }, []);
 
+  useEffect(() => {
+    if (status === "ready") {
+      router.navigate('/interests')
+    }
+  }, [status]);
+
   return (
     <Stack>
       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
@@ -69,6 +75,13 @@ function RootLayoutNav() {
             gestureEnabled: false,
             presentation: 'modal',
             title : "Welcome to BI 👋",
+          }}
+        />
+        <Stack.Screen
+          name="interests"
+          options={{
+            presentation: 'modal',
+            title : "Choose your interests",
           }}
         />
       </Stack.Protected>

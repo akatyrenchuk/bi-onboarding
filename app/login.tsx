@@ -1,16 +1,16 @@
 import { StatusBar } from 'expo-status-bar';
 import {Platform, StyleSheet, TextInput, View} from "react-native";
 
-import EditScreenInfo from '@/components/EditScreenInfo';
 import {ThemedButton, ThemedText, ThemedView, useThemeColor} from "@/components/Themed";
 import {useUser} from "@/app/user-ctx";
 import {ms, ScaledSheet} from "react-native-size-matters";
-import {Input} from "postcss";
 import {Image} from "expo-image";
 import {IconSymbol} from "@/components/IconSymbol";
+import { useRouter} from "expo-router";
 
 export default function LoginScreen() {
   const {setStatus} = useUser();
+  const router = useRouter();
   const backgroundColor = useThemeColor({ }, 'background');
 
   return (
@@ -36,7 +36,9 @@ export default function LoginScreen() {
 
         </TextInput>
       </View>
-      <ThemedButton textContent={"Log in"} onPress={() => setStatus("ready")}/>
+      <ThemedButton textContent={"Log in"} onPress={() => {
+        setStatus("ready");
+      }}/>
       <View style={{
         alignSelf: "flex-end",
         borderBottomWidth: 3,

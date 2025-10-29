@@ -116,12 +116,14 @@ export function ThemedView(props: ViewProps) {
   const { style, lightColor, darkColor, ...otherProps } = props;
   const backgroundColor = useThemeColor({ light: lightColor, dark: darkColor }, 'background');
 
-  return <DefaultView style={[{
-    backgroundColor,
-    paddingTop: insets.top,
-    paddingBottom: insets.bottom,
+  return (
+    <DefaultView style={[{
+      backgroundColor,
+      paddingTop: insets.top,
+      paddingBottom: insets.bottom,
 
-  }, style]} {...otherProps} />;
+    }, style]} {...otherProps} />
+  );
 }
 
 type ThemedButtonProps = PressableProps & {
