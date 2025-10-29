@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {View, StyleSheet, Button} from "react-native";
 import {ThemedText, ThemedView} from "@/components/Themed";
 import InterestsSwiper from "@/components/InterestsSwiper";
@@ -8,13 +8,39 @@ import {
   widthPercentageToDP
 } from 'react-native-responsive-screen';
 import {IconSymbol} from "@/components/IconSymbol";
+import {interestsList} from "@/dummy-data/interests";
+import SwiperCard from "@/components/SwiperCard";
+import Swiper from "react-native-deck-swiper";
+import {useRouter} from "expo-router";
 
 export default function InterestsScreen() {
+  const interests = interestsList.slice(0, 5);
   const progressWidth = widthPercentageToDP('100%') - ms(48);
+  const progressStep = 1 / interests.length;
+  const [progress, setProgress] = useState(progressStep)
+  const router = useRouter();
+
+  useEffect(() => {
+    console.log(progress)
+    if(progress > 0.9) {
+      router.back();
+    }
+  }, [progress]);
+
+  function handleDislike() {
+    setProgress(progress + progressStep);
+    console.log('Liked');
+  }
+
+  function handleLike() {
+    setProgress(progress + progressStep)
+    console.log('Disliked');
+  }
+
   return (
     <ThemedView style={styles.container}>
       <View style={styles.subContainer}>
-        <Progress.Bar progress={0.1} width={progressWidth} />
+        <Progress.Bar progress={progress} width={progressWidth} />
         <ThemedText style={styles.infoContainerText}>Swipe to answer</ThemedText>
         <View style={styles.infoContainer}>
           <View style={styles.infoContainerChoice}>
@@ -28,7 +54,19 @@ export default function InterestsScreen() {
         </View>
       </View>
       <View>
-        <InterestsSwiper/>
+        <Swiper
+          cards={interests}
+          renderCard={(interest) => {
+            console.log(interest)
+            return (
+              <SwiperCard interest={interest}/>
+            )
+          }}
+          onSwipedLeft={handleLike}
+          onSwipedRight={handleDislike}
+          stackSize={interestsList.length}
+          backgroundColor={"#fff"}
+        />
       </View>
     </ThemedView>
   )
