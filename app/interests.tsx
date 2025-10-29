@@ -14,27 +14,25 @@ import Swiper from "react-native-deck-swiper";
 import {useRouter} from "expo-router";
 
 export default function InterestsScreen() {
-  const interests = interestsList.slice(0, 5);
   const progressWidth = widthPercentageToDP('100%') - ms(48);
-  const progressStep = 1 / interests.length;
+  const progressStep = 1 / interestsList.length;
   const [progress, setProgress] = useState(progressStep)
   const router = useRouter();
 
   useEffect(() => {
-    console.log(progress)
-    if(progress > 0.9) {
-      router.back();
+    if(progress >= 0.999) {
+      setTimeout(() => {
+        router.back();
+      }, 1000)
     }
   }, [progress]);
 
   function handleDislike() {
     setProgress(progress + progressStep);
-    console.log('Liked');
   }
 
   function handleLike() {
     setProgress(progress + progressStep)
-    console.log('Disliked');
   }
 
   return (
@@ -55,7 +53,7 @@ export default function InterestsScreen() {
       </View>
       <View>
         <Swiper
-          cards={interests}
+          cards={interestsList}
           renderCard={(interest) => {
             console.log(interest)
             return (

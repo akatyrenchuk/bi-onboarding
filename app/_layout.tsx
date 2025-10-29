@@ -68,6 +68,14 @@ function RootLayoutNav() {
   return (
     <Stack>
       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+      <Stack.Screen
+        name="interests"
+        options={{
+          gestureEnabled: false,
+          presentation: 'modal',
+          title : "Choose your interests",
+        }}
+      />
       <Stack.Protected guard={status === "idle"}>
         <Stack.Screen
           name="login"
@@ -75,14 +83,6 @@ function RootLayoutNav() {
             gestureEnabled: false,
             presentation: 'modal',
             title : "Welcome to BI 👋",
-          }}
-        />
-        <Stack.Screen
-          name="interests"
-          options={{
-            gestureEnabled: false,
-            presentation: 'modal',
-            title : "Choose your interests",
           }}
         />
       </Stack.Protected>
