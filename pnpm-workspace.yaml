@@ -1,0 +1,5 @@
+# pnpm workspace configuration for bimm-api
+# This ensures pnpm treats this repo as the workspace root and avoids errors
+# like "packages field missing or empty" during `pnpm install`.
+packages:
+  - "**"  # include all sub-packages recursively (root package is included automatically)
