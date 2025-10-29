@@ -68,7 +68,7 @@ type EventCardProps = {
   description: string,
   imageUrl: string
 }
-function EventCard({
+export function EventCard({
   day, time, location, title, description, imageUrl,
 }: EventCardProps) {
   return (

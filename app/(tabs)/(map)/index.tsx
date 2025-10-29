@@ -19,15 +19,15 @@ export default function MapScreen() {
       source={`floor${selectedIndex + 1}`}
       style={styles.container}
     >
-      <View style={[{backgroundColor: backgroundColor}, styles.nextEventContainer]}>
-        <ThemedText type={"titleLarge"}>Your next event:</ThemedText>
-        <ThemedText type={"title"}>Coffee chat</ThemedText>
-        <ThemedText>Oslo Campus, 3d floor, D3-090</ThemedText>
-        <View style={{marginTop: ms(12)}}>
-          <ThemedButton textContent={"Show route"}/>
-        </View>
-      </View>
       <View style={[{marginBottom: insetsBottom, backgroundColor: backgroundColor, width: pickerContainerWidth}, styles.pickerContainer]}>
+        <EventCard
+          day={"Thursday"}
+          time={"10:00 - 14:00"}
+          location={"Oslo Campus"}
+          title={"Coffee hour at Oslo Campus"}
+          description={"Join us for a coffee hour at Oslo Campus"}
+          imageUrl={"https://picsum.photos/200/300"}
+        />
         <ThemedText>Select a floor</ThemedText>
         <Host matchContents>
           <Picker
@@ -48,6 +48,7 @@ export default function MapScreen() {
 }
 
 import {useSafeAreaInsets} from "react-native-safe-area-context";
+import {EventCard} from "@/app/(tabs)/(home)";
 
 const styles = ScaledSheet.create({
   container: {
