@@ -72,7 +72,7 @@ export default function ProfileScreen() {
         <View style={{
           paddingHorizontal: ms(12),
         }}>
-          <ThemedText type={"titleLarge"}>{"Events"}</ThemedText>
+          <ThemedText type={"titleLarge"}>{"Interests"}</ThemedText>
         </View>
         <ScrollView
           horizontal={true}
