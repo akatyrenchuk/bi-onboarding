@@ -132,8 +132,19 @@ export function ThemedButton({
 }: ThemedButtonProps) {
 
   return (
-    <Pressable style={style} onPress={onPress} {...otherProps}>
-      <ThemedText>{textContent}</ThemedText>
+    <Pressable style={styles.container} onPress={onPress} {...otherProps}>
+      <ThemedText type={"defaultBold"} style={{color: 'white'}}>{textContent}</ThemedText>
     </Pressable>
   );
 }
+
+const styles = ScaledSheet.create({
+  container: {
+    backgroundColor: '#0a64ff',
+    padding: '12@ms',
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: '4@ms',
+  }
+});
