@@ -1,5 +1,5 @@
 import {StyleSheet, View} from "react-native";
-import {ThemedText, ThemedView, useThemeColor} from "@/components/Themed";
+import {ThemedButton, ThemedText, ThemedView, useThemeColor} from "@/components/Themed";
 import {Host, Picker, VStack} from "@expo/ui/swift-ui";
 import {useState} from "react";
 import {ms, ScaledSheet} from "react-native-size-matters";
@@ -20,10 +20,12 @@ export default function MapScreen() {
       style={styles.container}
     >
       <View style={[{backgroundColor: backgroundColor}, styles.nextEventContainer]}>
-        <ThemedText>Your next event:</ThemedText>
-        <ThemedText>Oslo Campus</ThemedText>
-        <ThemedText>3d floor</ThemedText>
-        <ThemedText>D3-090</ThemedText>
+        <ThemedText type={"titleLarge"}>Your next event:</ThemedText>
+        <ThemedText type={"title"}>Coffee chat</ThemedText>
+        <ThemedText>Oslo Campus, 3d floor, D3-090</ThemedText>
+        <View style={{marginTop: ms(12)}}>
+          <ThemedButton textContent={"Show route"}/>
+        </View>
       </View>
       <View style={[{marginBottom: insetsBottom, backgroundColor: backgroundColor, width: pickerContainerWidth}, styles.pickerContainer]}>
         <ThemedText>Select a floor</ThemedText>
@@ -59,7 +61,7 @@ const styles = ScaledSheet.create({
     marginTop: 'auto',
     gap: '6@ms',
     padding: '12@ms',
-    borderRadius: '12@ms'
+    borderRadius: '4@ms'
   },
   nextEventContainer: {
     shadowColor: "#000",
@@ -72,9 +74,10 @@ const styles = ScaledSheet.create({
 
     elevation: 24,
     position: 'absolute',
-    top: '24@ms',
-    right: '24@ms',
+    top: '12@ms',
+    right: '12@ms',
     padding: '12@ms',
-    borderRadius: '12@ms'
+    borderRadius: '4@ms',
+    gap: '6@ms',
   }
 });
