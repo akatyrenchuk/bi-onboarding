@@ -6,7 +6,8 @@
 import { Text as DefaultText, View as DefaultView } from 'react-native';
 
 import Colors from '@/constants/Colors';
-import { useColorScheme } from './useColorScheme';
+import {useSafeAreaInsets} from "react-native-safe-area-context";
+import {useColorScheme} from "@/hooks/useColorScheme";
 
 type ThemeProps = {
   lightColor?: string;
@@ -30,16 +31,22 @@ export function useThemeColor(
   }
 }
 
-export function Text(props: TextProps) {
+export function ThemedText(props: TextProps) {
   const { style, lightColor, darkColor, ...otherProps } = props;
   const color = useThemeColor({ light: lightColor, dark: darkColor }, 'text');
 
   return <DefaultText style={[{ color }, style]} {...otherProps} />;
 }
 
-export function View(props: ViewProps) {
+export function ThemedView(props: ViewProps) {
+  const insets = useSafeAreaInsets();
   const { style, lightColor, darkColor, ...otherProps } = props;
   const backgroundColor = useThemeColor({ light: lightColor, dark: darkColor }, 'background');
 
-  return <DefaultView style={[{ backgroundColor }, style]} {...otherProps} />;
+  return <DefaultView style={[{
+    backgroundColor,
+    paddingTop: insets.top,
+    paddingBottom: insets.bottom,
+
+  }, style]} {...otherProps} />;
 }

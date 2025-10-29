@@ -1,59 +1,95 @@
-import React from 'react';
-import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { Link, Tabs } from 'expo-router';
-import { Pressable } from 'react-native';
+import React from "react";
+import {DynamicColorIOS, Platform} from "react-native";
+import {useColorScheme} from "@/hooks/useColorScheme";
 
-import Colors from '@/constants/Colors';
-import { useColorScheme } from '@/components/useColorScheme';
-import { useClientOnlyValue } from '@/components/useClientOnlyValue';
+import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+import {Icon, Label, NativeTabs, VectorIcon} from "expo-router/unstable-native-tabs";
+import {useThemeColor} from "@/hooks/useThemeColor";
+import Colors from "@/constants/Colors";
 
-// You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
-function TabBarIcon(props: {
-  name: React.ComponentProps<typeof FontAwesome>['name'];
-  color: string;
-}) {
-  return <FontAwesome size={28} style={{ marginBottom: -3 }} {...props} />;
-}
+export default function TabsLayout() {
+  const colorScheme = useColorScheme() ?? "light";
+  const highlightBackground = useThemeColor({}, "highlightBackground");
 
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
+  const selectedTint =
+    Platform.OS === "ios"
+      ? DynamicColorIOS({ light: Colors[colorScheme].tabIconSelected, dark: Colors[colorScheme].tabIconSelected })
+      : Colors[colorScheme].tabIconSelected;
+
+  const backgroundColor =
+    Platform.OS === "ios"
+      ? DynamicColorIOS({ light: highlightBackground, dark: highlightBackground })
+      : highlightBackground;
 
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        // Disable the static render of the header on web
-        // to prevent a hydration error in React Navigation v6.
-        headerShown: useClientOnlyValue(false, true),
-      }}>
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Tab One',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-          headerRight: () => (
-            <Link href="/modal" asChild>
-              <Pressable>
-                {({ pressed }) => (
-                  <FontAwesome
-                    name="info-circle"
-                    size={25}
-                    color={Colors[colorScheme ?? 'light'].text}
-                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
-                  />
-                )}
-              </Pressable>
-            </Link>
+    <NativeTabs
+      tintColor={selectedTint}
+      backgroundColor={backgroundColor}
+      disableTransparentOnScrollEdge
+      blurEffect="none"
+    >
+      {/* Home / (dashboard) */}
+      <NativeTabs.Trigger name="(home)">
+        <Label>{"Home"}</Label>
+        {Platform.select({
+          ios: <Icon sf={{ default: "house", selected: "house.fill" }}/>,
+          android: (
+            <Icon
+              src={<VectorIcon family={MaterialCommunityIcons} name="home"/>}
+            />
+          )
+        })}
+      </NativeTabs.Trigger>
+      <NativeTabs.Trigger name="(map)">
+        <Label>{"Map"}</Label>
+        {Platform.select({
+          ios: (
+            <Icon
+              sf={{
+                default: "map",
+                selected: "map.fill"
+              }}
+            />
           ),
-        }}
-      />
-      <Tabs.Screen
-        name="two"
-        options={{
-          title: 'Tab Two',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-        }}
-      />
-    </Tabs>
+          android: (
+            <Icon
+              src={<VectorIcon family={MaterialCommunityIcons} name="map"/>}
+            />
+          )
+        })}
+      </NativeTabs.Trigger>
+      {/* Wallet / (wallet) */}
+      <NativeTabs.Trigger name="(groups)">
+        <Label>{"Groups"}</Label>
+        {Platform.select({
+          ios: (
+            <Icon
+              sf={{
+                default: "person.3",
+                selected: "person.3.fill"
+              }}
+            />
+          ),
+          android: (
+            <Icon
+              src={
+                <VectorIcon family={MaterialCommunityIcons} name="account-group"/>
+              }
+            />
+          )
+        })}
+      </NativeTabs.Trigger>
+      <NativeTabs.Trigger name="(profile)">
+        <Label>{"Profile"}</Label>
+        {Platform.select({
+          ios: <Icon sf={{ default: "person", selected: "person.fill" }}/>,
+          android: (
+            <Icon
+              src={<VectorIcon family={MaterialCommunityIcons} name="account-outline"/>}
+            />
+          )
+        })}
+      </NativeTabs.Trigger>
+    </NativeTabs>
   );
 }
