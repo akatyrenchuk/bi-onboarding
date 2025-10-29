@@ -8,10 +8,12 @@ import {Pressable, PressableProps, Text as DefaultText, View as DefaultView} fro
 import Colors from '@/constants/Colors';
 import {useSafeAreaInsets} from "react-native-safe-area-context";
 import {useColorScheme} from "@/hooks/useColorScheme";
+import {ScaledSheet} from "react-native-size-matters";
 
 type ThemeProps = {
   lightColor?: string;
   darkColor?: string;
+  type?: "default" | "title" | "titleLarge" | "defaultLight" | "defaultSemiBold" | "defaultBold" | "extraSmall" | "extraSmallLight" | "small" | "smallSemiBold" | "extraSmallSemiBold" | "extraSmallBold" | "smallBold";
 };
 
 export type TextProps = ThemeProps & DefaultText['props'];
@@ -32,11 +34,82 @@ export function useThemeColor(
 }
 
 export function ThemedText(props: TextProps) {
-  const { style, lightColor, darkColor, ...otherProps } = props;
+  const { style, lightColor, darkColor, type = "default", ...otherProps } = props;
   const color = useThemeColor({ light: lightColor, dark: darkColor }, 'text');
 
-  return <DefaultText style={[{ color }, style]} {...otherProps} />;
+  return <DefaultText style={[
+    { color },
+    type === "default" ? themedTextStyles.default : undefined,
+    type === "title" ? themedTextStyles.title : undefined,
+    type === "titleLarge" ? themedTextStyles.titleLarge : undefined,
+    type === "defaultLight" ? themedTextStyles.defaultLight : undefined,
+    type === "defaultSemiBold" ? themedTextStyles.defaultSemiBold : undefined,
+    type === "defaultBold" ? themedTextStyles.defaultBold : undefined,
+    type === "extraSmall" ? themedTextStyles.extraSmall : undefined,
+    type === "extraSmallLight" ? themedTextStyles.extraSmallLight : undefined,
+    type === "extraSmallSemiBold" ? themedTextStyles.extraSmallSemiBold : undefined,
+    type === "extraSmallBold" ? themedTextStyles.extraSmallBold : undefined,
+    type === "small" ? themedTextStyles.small : undefined,
+    type === "smallSemiBold" ? themedTextStyles.smallSemiBold : undefined,
+    type === "smallBold" ? themedTextStyles.smallBold : undefined,
+    style
+  ]} {...otherProps} />;
 }
+
+export const themedTextStyles = ScaledSheet.create({
+  title: {
+    fontSize: "16@ms",
+    fontFamily: "MuseoSans700"
+  },
+  titleLarge: {
+    fontSize: "20@ms",
+    fontFamily: "MuseoSans700"
+  },
+  default: {
+    fontSize: "14@ms",
+    fontFamily: "MuseoSans500"
+  },
+  defaultLight: {
+    fontSize: "14@ms",
+    fontFamily: "MuseoSans300"
+  },
+  defaultSemiBold: {
+    fontSize: "14@ms",
+    fontFamily: "Nacelle-SemiBold"
+  },
+  defaultBold: {
+    fontSize: "14@ms",
+    fontFamily: "MuseoSans700"
+  },
+  small: {
+    fontFamily: "MuseoSans500",
+    fontSize: "12@ms"
+  },
+  smallSemiBold: {
+    fontFamily: "MuseoSans500",
+    fontSize: "12@ms"
+  },
+  smallBold: {
+    fontSize: "12@ms",
+    fontFamily: "MuseoSans700"
+  },
+  extraSmall: {
+    fontSize: "10@ms",
+    fontFamily: "MuseoSans500"
+  },
+  extraSmallSemiBold: {
+    fontSize: "10@ms",
+    fontFamily: "MuseoSans500"
+  },
+  extraSmallBold: {
+    fontSize: "10@ms",
+    fontFamily: "MuseoSans700"
+  },
+  extraSmallLight: {
+    fontSize: "10@ms",
+    fontFamily: "MuseoSans300"
+  }
+});
 
 export function ThemedView(props: ViewProps) {
   const insets = useSafeAreaInsets();

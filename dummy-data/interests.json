@@ -1,0 +1,52 @@
+[
+  {
+    "Name": "Business & Career Development",
+    "Description": "Professional growth, networking, and industry-focused groups for future business leaders.",
+    "ImageUrl": "https://images.unsplash.com/photo-1542744173-8e7e53415bb0"
+  },
+  {
+    "Name": "Technology & Digital Skills",
+    "Description": "Build digital skills through hands-on sessions in coding, analytics, UX, and emerging tech.",
+    "ImageUrl": "https://images.unsplash.com/photo-1519389950473-47ba0277781c"
+  },
+  {
+    "Name": "Creativity, Art & Media",
+    "Description": "Explore artistic expression through music, design, writing, content creation, and film.",
+    "ImageUrl": "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4"
+  },
+  {
+    "Name": "Language & Cultural Exchange",
+    "Description": "Meet new people and experience cultures through language practice and cultural events.",
+    "ImageUrl": "https://images.unsplash.com/photo-1511988617509-a57c8a288659"
+  },
+  {
+    "Name": "Social & Lifestyle",
+    "Description": "Connect through everyday interests like food, travel, parties, and student life activities.",
+    "ImageUrl": "https://www.timeshighereducation.com/sites/default/files/styles/the_breaking_news_image_style/public/group_of_students_eating_pizza_at_college_canteen.jpg?itok=_SnVdcD5"
+  },
+  {
+    "Name": "Sports, Fitness & Wellness",
+    "Description": "Join communities focused on physical activity, health, and wellbeing.",
+    "ImageUrl": "https://images.unsplash.com/photo-1517836357463-d25dfeac3438"
+  },
+  {
+    "Name": "Outdoor & Adventure",
+    "Description": "Hiking, skiing, and exploring the outdoors in Norway and beyond.",
+    "ImageUrl": "https://images.unsplash.com/photo-1501785888041-af3ef285b470"
+  },
+  {
+    "Name": "Gaming & Esports",
+    "Description": "Play casually or competitively with peers who love games and strategy.",
+    "ImageUrl": "https://images.unsplash.com/photo-1542751371-adc38448a05e"
+  },
+  {
+    "Name": "Volunteering & Community Impact",
+    "Description": "Make a difference through social initiatives, charity, and community projects.",
+    "ImageUrl": "https://images.unsplash.com/photo-1469474968028-56623f02e42e"
+  },
+  {
+    "Name": "Sustainability & Environment",
+    "Description": "Explore climate action, circular economy, and sustainability innovations.",
+    "ImageUrl": "https://images.unsplash.com/photo-1501004318641-b39e6451bec6"
+  }
+]

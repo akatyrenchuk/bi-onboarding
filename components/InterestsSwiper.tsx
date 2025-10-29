@@ -18,7 +18,6 @@ export default function InterestsSwiper() {
   }
 
   return (
-    <View style={styles.container}>
       <Swiper
         cards={interests}
         renderCard={(interest) => <SwiperCard interest={interest}></SwiperCard>}
@@ -28,7 +27,6 @@ export default function InterestsSwiper() {
         backgroundColor={"#fff"}
         infinite
       />
-    </View>
   )
 }
 

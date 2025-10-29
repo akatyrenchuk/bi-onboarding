@@ -6,9 +6,7 @@ import InterestsScreen from "@/components/InterestsScreen";
 
 export default function ProfileScreen() {
   return (
-    <ThemedView style={styles.container}>
-      <InterestsScreen></InterestsScreen>
-    </ThemedView>
+    <InterestsScreen/>
   );
 }
 
