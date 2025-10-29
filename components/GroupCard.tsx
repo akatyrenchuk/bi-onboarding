@@ -19,7 +19,7 @@ export type SettingsItemProps = ViewProps & {
 export default function GroupCard({
   name,
   description,
-  url,
+  imageUrl,
 }: GroupEntity) {
   const lineColor = "#000";
   const iconColor = "#000";
@@ -27,7 +27,7 @@ export default function GroupCard({
   return (
     <View style={[{ borderColor: lineColor }, styles.item]}>
       <Image
-        source={url}
+        source={imageUrl}
         style={{
           width: ms(60),
           height: ms(60),
