@@ -9,7 +9,7 @@ export default function ProfileScreen() {
   const backgroundColor = useThemeColor({ }, 'background');
 
   return (
-    <View style={{
+<View style={{
       flex: 1,
       paddingTop: ms(24),
       backgroundColor,

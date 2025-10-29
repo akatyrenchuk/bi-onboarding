@@ -10,4 +10,6 @@ export default interface GroupEntity {
   interest: InterestEntity
   events?: EventEntity[];
   users?: UserEntity[];
+  createdAt?: string;
+  updatedAt?: string;
 }
