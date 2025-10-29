@@ -1,34 +1,43 @@
 import {ExpoConfig} from "expo/config";
 
 export const expoConfig: ExpoConfig = {
-  "name": "bi-onboarding",
+  "name": "BI HUB",
   "slug": "bi-onboarding",
   "version": "1.0.0",
   "orientation": "portrait",
-  "icon": "./assets/images/icon.png",
   "scheme": "bionboarding",
   "userInterfaceStyle": "automatic",
   "newArchEnabled": true,
   "splash": {
-    "image": "./assets/images/splash-icon.png",
+    "image": "./assets/images/splash.png",
     "resizeMode": "contain",
-    "backgroundColor": "#ffffff"
+    "backgroundColor": "#002341"
   },
   "ios": {
+    "icon": './assets/icon.icon',
     "supportsTablet": true,
     "bundleIdentifier": "com.antonkatyrenchuk.bi-onboarding"
   },
   "android": {
     "adaptiveIcon": {
-      "foregroundImage": "./assets/images/adaptive-icon.png",
-      "backgroundColor": "#ffffff"
+      "foregroundImage": "./assets/images/icon.png",
+      "backgroundColor": "#002341"
     },
     "edgeToEdgeEnabled": true,
     "predictiveBackGestureEnabled": false,
     "package": "com.antonkatyrenchuk.bionboarding"
   },
   "plugins": [
-    "expo-router"
+    "expo-router",
+    [
+      "expo-asset",
+      {
+        "assets": [
+          "./assets/images/floors",
+          "./assets/images"
+        ]
+      }
+    ],
   ],
   "experiments": {
     "typedRoutes": true

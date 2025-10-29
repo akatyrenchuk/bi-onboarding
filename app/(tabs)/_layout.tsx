@@ -40,25 +40,6 @@ export default function TabsLayout() {
           )
         })}
       </NativeTabs.Trigger>
-      <NativeTabs.Trigger name="(map)">
-        <Label>{"Map"}</Label>
-        {Platform.select({
-          ios: (
-            <Icon
-              sf={{
-                default: "map",
-                selected: "map.fill"
-              }}
-            />
-          ),
-          android: (
-            <Icon
-              src={<VectorIcon family={MaterialCommunityIcons} name="map"/>}
-            />
-          )
-        })}
-      </NativeTabs.Trigger>
-      {/* Wallet / (wallet) */}
       <NativeTabs.Trigger name="(groups)">
         <Label>{"Groups"}</Label>
         {Platform.select({
@@ -75,6 +56,24 @@ export default function TabsLayout() {
               src={
                 <VectorIcon family={MaterialCommunityIcons} name="account-group"/>
               }
+            />
+          )
+        })}
+      </NativeTabs.Trigger>
+      <NativeTabs.Trigger name="(map)">
+        <Label>{"Map"}</Label>
+        {Platform.select({
+          ios: (
+            <Icon
+              sf={{
+                default: "map",
+                selected: "map.fill"
+              }}
+            />
+          ),
+          android: (
+            <Icon
+              src={<VectorIcon family={MaterialCommunityIcons} name="map"/>}
             />
           )
         })}

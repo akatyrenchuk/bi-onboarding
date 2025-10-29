@@ -7,6 +7,7 @@ import { useEffect } from 'react';
 import 'react-native-reanimated';
 import {useColorScheme} from "react-native";
 import UserProvider, {useUser} from "@/app/user-ctx";
+SplashScreen.preventAutoHideAsync();
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -49,8 +50,6 @@ export default function RootLayout() {
     </UserProvider>
 );
 }
-
-SplashScreen.preventAutoHideAsync();
 
 function RootLayoutNav() {
   const {status} = useUser();
